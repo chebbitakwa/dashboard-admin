@@ -1,0 +1,12 @@
+.workshopcard{
+    display: flex;
+    
+    
+}
+ .description{
+    display: flex !important;
+    justify-content: space-around !important;
+    width: 100%;
+
+} 
+
