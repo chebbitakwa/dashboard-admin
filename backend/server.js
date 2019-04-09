@@ -23,7 +23,7 @@ MongoClient.connect(MongoUrl, { useNewUrlParser: true }, (err, client) => {
        else res.send("new workshop added");
      });
   });
-  // //     //verification d'ajout
+  // //     //workshop
    app.get("/workshops", (req, res) => { 
      db.collection("workshop")
        .find()
@@ -39,23 +39,126 @@ MongoClient.connect(MongoUrl, { useNewUrlParser: true }, (err, client) => {
       }
 
        )
-
-  
-
-
-
-
-    // .then(Data => {
-    // Data.remove(name, err => {
-    //       if (err) return res.send(err);
-    //       return res.send({ success: true });
-    //     });
-    //    })
   });
+   /////////////////////////Colloque/////////////////////////////////
+  app.post('/add-colloque', (req, res) => {
+    let newColloque = req.body;
+    db.collection("colloque").insertOne(newColloque, (err, data) => {
+      if (err) res.send("cant not add new colloque");
+      else res.send("new colloque added");
+    });
+ });
 
+ app.get("/colloques", (req, res) => { 
+  db.collection("colloque")
+    .find()
+    .toArray((err, data) => {
+      if (err) res.send("cant not get colloque List");
+      else res.send(data);
+    });
+});
+app.delete("/removecolloques/:name", (req, res) => {
+  db.collection("colloque").deleteOne( { "name" : req.params.name  },(err, data) => {
+    if (err) res.send("erreur");
+    else res.send(data);
+  }
 
+   )
+});
+ /////////////////////////THINKTANK/////////////////////////////////
+app.post('/add-ThinkTank', (req, res) => {
+  let newThinkTank = req.body;
+  db.collection("ThinkTank").insertOne(newThinkTank, (err, data) => {
+    if (err) res.send("cant not add new ThinkTank");
+    else res.send("new ThinkTank added");
+  });
+});
+app.get("/ThinkTanks", (req, res) => { 
+  db.collection("ThinkTank")
+    .find()
+    .toArray((err, data) => {
+      if (err) res.send("cant not get ThinkTank List");
+      else res.send(data);
+    });
+});
+app.delete("/removeThinkTanks/:name", (req, res) => {
+  db.collection("ThinkTank").deleteOne( { "name" : req.params.name  },(err, data) => {
+    if (err) res.send("erreur");
+    else res.send(data);
+  }
+   )
+});
+ /////////////////////////Parcour/////////////////////////////////
+ app.post('/add-parcour', (req, res) => {
+  let newParcour = req.body;
+  db.collection("parcour").insertOne(newParcour, (err, data) => {
+    if (err) res.send("cant not add new parcour");
+    else res.send("new parcour added");
+  });
 });
 
+app.get("/parcours", (req, res) => { 
+db.collection("parcour")
+  .find()
+  .toArray((err, data) => {
+    if (err) res.send("cant not get parcour List");
+    else res.send(data);
+  });
+});
+app.delete("/removeparcours/:name", (req, res) => {
+db.collection("parcour").deleteOne( { "name" : req.params.name  },(err, data) => {
+  if (err) res.send("erreur");
+  else res.send(data);
+}
+
+ )
+});
+////////////////////////////////////Raid_Art//////////////////////
+app.post('/add-art', (req, res) => {
+  let newArt = req.body;
+  db.collection("art").insertOne(newArt, (err, data) => {
+    if (err) res.send("cant not add new art");
+    else res.send("new art added");
+  });
+});
+
+app.get("/arts", (req, res) => { 
+db.collection("art")
+  .find()
+  .toArray((err, data) => {
+    if (err) res.send("cant not get art List");
+    else res.send(data);
+  });
+});
+app.delete("/removearts/:name", (req, res) => {
+db.collection("art").deleteOne( { "name" : req.params.name  },(err, data) => {
+  if (err) res.send("erreur");
+  else res.send(data);
+}
+
+ )
+});
+});
+/* wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww*/
 
 // // //definition de serveur
 app.listen(5000, err => {

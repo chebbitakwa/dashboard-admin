@@ -9,6 +9,7 @@ import {
   NavLink
 } from "reactstrap";
 import "./Nav.css";
+import { Link } from "react-router-dom";
 export default class NavBar extends React.Component {
   constructor(props) {
     super(props);
@@ -36,19 +37,26 @@ export default class NavBar extends React.Component {
           </NavItem>
 
           <NavItem>
-            <NavLink href="#">Colloque scientifique</NavLink>
+            <NavLink >
+             <Link className="t_link" to='/colloques' >Colloque scientifique</Link>
+              </NavLink>
           </NavItem>
           <NavItem>
-            <NavLink href="#">Workshop</NavLink>
+            <NavLink >
+            <Link className="t_link" to='/Workshop' >Workshop</Link>
+            </NavLink>
+            
           </NavItem>
           <NavItem>
-            <NavLink href="#">Think Tank</NavLink>
+            <NavLink>
+            <Link className="t_link" to='/ThinkTanks' >Think Tank</Link>
+            </NavLink>
           </NavItem>
           <NavItem>
-            <NavLink href="#">Parcours:succes</NavLink>
+            <NavLink ><Link className="t_link" to='/Parcour' >Parcours succes</Link></NavLink>
           </NavItem>
           <NavItem>
-            <NavLink href="#">Raid-Art</NavLink>
+            <NavLink > <Link className="t_link" to='/Art' >Raid-Art </Link></NavLink>
           </NavItem>
           <NavItem>
             <NavLink href="#">Galerie</NavLink>
